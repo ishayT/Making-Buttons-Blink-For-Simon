@@ -48,83 +48,25 @@ class ViewController: UIViewController {
     
     
     @IBAction func givingShadowForTHeButton(_ sender: UIButton) {
-        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
-        //var currentButton = UIButton()
-        //        for index in 0...arrayOfnumbers.count - 1{
-        //
-        //            currentButton = (arrayOfButtons[arrayOfnumbers[index] - 1])
-        //
-        ////            gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(@objc makeButtonFlash(putButtonHere: currentButton)), userInfo: nil, repeats: true)
-        //
-        //            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-        //                DispatchQueue.main.async {
-        //                    makeButtonFlash(btn: <#T##UIButton#>)
-        //                }
-        //            }
-        //        }
-        //        var index = 0
-        //        while index < arrayOfnumbers.count {
-        //            makeButtonFlash(btn: arrayOfButtons[arrayOfnumbers[index] - 1])
-        //
-        //            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-        //                DispatchQueue.main.async {
-        //                    self.makeButtonFlash(btn: self.arrayOfButtons[self.arrayOfnumbers[index] - 1])
-        //                }
-        //                index += 1
-        //            }
-        //        }
         
         
-        //            UIView.animate(withDuration: 1.0, delay: 1.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-        //
-        //
-        //
-        //            }, completion: true)
-        //        var index = 0
-        
-        //        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(callingButtons(index:)), userInfo: nil, repeats: true)
-        //        callingButtons(index: 0)
     }
     
     @ objc func callingButtons (index: Int){
-        //        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-        //            while index < self.arrayOfnumbers.count - 1{
-        //                DispatchQueue.main.async {
-        //                    UIView.animate(withDuration: 1.0, delay: 1.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-        //                        self.makeButtonFlash(btn: self.arrayOfButtons[self.arrayOfnumbers[index] - 1])
-        //
-        //                    }, completion: { (true) in
-        //                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-        //                            if index < self.arrayOfnumbers.count - 1 {
-        //                                self.callingButtons(index: index + 1)
-        //
-        //                            }
-        //                        })
-        //                    })
-        //                }
-        //            }
-        //        }
-        if index < self.arrayOfnumbers.count - 1 {
-            
-            UIView.animate(withDuration: 1.0, delay: 1.0, options: UIViewAnimationOptions.curveEaseOut, animations: {self.makeButtonFlash(btn: self.arrayOfButtons[self.arrayOfnumbers[index] - 1]))}
-                
-                
-            }, completion: { (true) in
-                index += 1 })
-            
-        }
-       
         
-        
-        func makeButtonFlash(btn: UIButton) {
-            btn.layer.shadowColor = UIColor.white.cgColor
-            btn.layer.shadowRadius = 10
-            btn.layer.shadowOffset = CGSize(width: 0, height: 0)
-            btn.flash()
-        }
         
     }
+        
+        
+    func makeButtonFlash(btn: UIButton) {
+        btn.layer.shadowColor = UIColor.white.cgColor
+        btn.layer.shadowRadius = 10
+        btn.layer.shadowOffset = CGSize(width: 0, height: 0)
+        btn.flash()
+    }
+        
 }
+
 
 extension UIButton {
     func flash() {
@@ -141,3 +83,68 @@ extension UIButton {
     }
     
 }
+
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//
+// giving shadow for the buttons
+
+//var currentButton = UIButton()
+//        for index in 0...arrayOfnumbers.count - 1{
+//
+//            currentButton = (arrayOfButtons[arrayOfnumbers[index] - 1])
+//
+////            gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(@objc makeButtonFlash(putButtonHere: currentButton)), userInfo: nil, repeats: true)
+//
+//            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+//                DispatchQueue.main.async {
+//                    makeButtonFlash(btn: <#T##UIButton#>)
+//                }
+//            }
+//        }
+//        var index = 0
+//        while index < arrayOfnumbers.count {
+//            makeButtonFlash(btn: arrayOfButtons[arrayOfnumbers[index] - 1])
+//
+//            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+//                DispatchQueue.main.async {
+//                    self.makeButtonFlash(btn: self.arrayOfButtons[self.arrayOfnumbers[index] - 1])
+//                }
+//                index += 1
+//            }
+//        }
+
+
+//            UIView.animate(withDuration: 1.0, delay: 1.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+//
+//
+//
+//            }, completion: true)
+//        var index = 0
+
+//        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(callingButtons(index:)), userInfo: nil, repeats: true)
+//        callingButtons(index: 0)
+
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$//
+//calling buttons
+
+//        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+//            while index < self.arrayOfnumbers.count - 1{
+//                DispatchQueue.main.async {
+//                    UIView.animate(withDuration: 1.0, delay: 1.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+//                        self.makeButtonFlash(btn: self.arrayOfButtons[self.arrayOfnumbers[index] - 1])
+//
+//                    }, completion: { (true) in
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+//                            if index < self.arrayOfnumbers.count - 1 {
+//                                self.callingButtons(index: index + 1)
+//
+//                            }
+//                        })
+//                    })
+//                }
+//            }
+//        }
