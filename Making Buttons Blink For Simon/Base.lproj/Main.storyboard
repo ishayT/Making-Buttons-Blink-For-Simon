@@ -26,7 +26,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="givingShadowForTHeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xN3-Pc-sup"/>
+                                    <action selector="btnForRunningComputerGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vU1-jI-FDJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsi-cM-wxK">

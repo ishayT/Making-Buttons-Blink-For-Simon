@@ -12,9 +12,9 @@ class ViewController: UIViewController {
     
     var gameTimer: Timer!
     
-    @objc let arrayOfnumbers : [Int] = [2,4,2,3,3,3,1,2,4]
+    @objc let arrayOfnumbers : [Int] = [1,2,4,2,3,3,3,1,2,4,1]
     
-    var index : Int = Int()
+    var indexForComputer : Int = 0
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var shadowGiver: UIButton!
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var button4: UIButton!
     
     
-    @objc var arrayOfButtons : [UIButton] = []
+    var arrayOfButtons : [UIButton] = []
     
     
     override func viewDidLoad() {
@@ -34,36 +34,50 @@ class ViewController: UIViewController {
         
         arrayOfButtons = [button1, button2, button3, button4]
         
-        index = 0
     }
     
     @IBAction func playButtons(_ sender: UIButton) {
-        for index in 1...4 {
-            if index == sender.tag {
+        for i in 1...4 {
+            if i == sender.tag {
                 
-                makeButtonFlash(btn: sender)
+                makeUserBtnFlash(btn: sender)
             }
         }
     }
     
     
-    @IBAction func givingShadowForTHeButton(_ sender: UIButton) {
+    @IBAction func btnForRunningComputerGame(_ sender: UIButton) {
         
-        
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.4, target: self, selector: #selector(usingButtonsArray), userInfo: nil, repeats: true)
     }
     
-    @ objc func callingButtons (index: Int){
-        
-        
+    
+    @objc func usingButtonsArray() {
+        makeComputerButtonFlash(buttons: arrayOfButtons)
     }
         
+    func makeComputerButtonFlash(buttons: [UIButton]) {
+        if indexForComputer == arrayOfnumbers.count - 1 {
+            gameTimer.invalidate()
+            indexForComputer = 0
+        }
         
-    func makeButtonFlash(btn: UIButton) {
+        if indexForComputer >= 0 && indexForComputer < arrayOfnumbers.count - 1 {
+            buttons[arrayOfnumbers[indexForComputer] - 1].layer.shadowColor = UIColor.white.cgColor
+            buttons[arrayOfnumbers[indexForComputer] - 1].layer.shadowRadius = 10
+            buttons[arrayOfnumbers[indexForComputer] - 1].layer.shadowOffset = CGSize(width: 0, height: 0)
+            buttons[arrayOfnumbers[indexForComputer] - 1].flash()
+            indexForComputer += 1
+        }
+    }
+    
+    func makeUserBtnFlash(btn: UIButton){
         btn.layer.shadowColor = UIColor.white.cgColor
         btn.layer.shadowRadius = 10
         btn.layer.shadowOffset = CGSize(width: 0, height: 0)
         btn.flash()
     }
+    
         
 }
 
