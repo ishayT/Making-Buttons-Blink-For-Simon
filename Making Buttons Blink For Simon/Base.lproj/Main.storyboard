@@ -85,10 +85,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="button1" destination="Rsi-cM-wxK" id="vAT-lj-mkk"/>
-                        <outlet property="button2" destination="To4-VI-Mv1" id="t9N-f1-MHc"/>
-                        <outlet property="button3" destination="pgt-ID-pkT" id="HJt-kv-AeM"/>
-                        <outlet property="button4" destination="Olp-no-bqZ" id="WOj-Fh-6bL"/>
+                        <outlet property="button1" destination="Rsi-cM-wxK" id="hpa-2c-AND"/>
+                        <outlet property="button2" destination="To4-VI-Mv1" id="hDt-Z2-mYe"/>
+                        <outlet property="button3" destination="pgt-ID-pkT" id="JTG-34-TOE"/>
+                        <outlet property="button4" destination="Olp-no-bqZ" id="21U-jk-IgY"/>
                         <outlet property="shadowGiver" destination="wJ8-K5-AKr" id="2xl-yI-cTQ"/>
                         <outlet property="textField" destination="vST-id-yhg" id="2JH-Wp-saQ"/>
                     </connections>

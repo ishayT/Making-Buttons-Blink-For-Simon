@@ -11,10 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     
     var gameTimer: Timer!
-    
-    @objc let arrayOfnumbers : [Int] = [1,2,4,2,3,3,3,1,2,4,1]
-    
     var indexForComputer : Int = 0
+    
+    var arrayOfnumbers : [Int] = [1,2,3]
+    var arrayOfButtons : [UIButton] = []
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var shadowGiver: UIButton!
@@ -24,18 +24,48 @@ class ViewController: UIViewController {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
-    
-    
-    var arrayOfButtons : [UIButton] = []
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         arrayOfButtons = [button1, button2, button3, button4]
-        
     }
     
+    
+    // Methods for computer turn
+    @IBAction func btnForRunningComputerGame(_ sender: UIButton) {
+        
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.1, target: self, selector: #selector(usingButtonsArray), userInfo: nil, repeats: true)
+    }
+    
+    
+    @objc func usingButtonsArray() {
+        
+        makeComputerButtonFlash(buttons: arrayOfButtons)
+    }
+        
+    func makeComputerButtonFlash(buttons: [UIButton]) {
+        
+        if indexForComputer == arrayOfnumbers.count - 1{
+            
+            buttons[arrayOfnumbers[indexForComputer] - 1].flash()
+            gameTimer.invalidate()
+            indexForComputer = 0
+        }
+        
+        if indexForComputer < arrayOfnumbers.count - 1 {
+            
+            buttons[arrayOfnumbers[indexForComputer] - 1].flash()
+            indexForComputer += 1
+            print(buttons[arrayOfnumbers[indexForComputer] - 1])
+        }
+        
+    }
+
+    
+    
+    // Methods for user turn
     @IBAction func playButtons(_ sender: UIButton) {
         for i in 1...4 {
             if i == sender.tag {
@@ -45,57 +75,30 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func btnForRunningComputerGame(_ sender: UIButton) {
-        
-        gameTimer = Timer.scheduledTimer(timeInterval: 1.4, target: self, selector: #selector(usingButtonsArray), userInfo: nil, repeats: true)
-    }
-    
-    
-    @objc func usingButtonsArray() {
-        makeComputerButtonFlash(buttons: arrayOfButtons)
-    }
-        
-    func makeComputerButtonFlash(buttons: [UIButton]) {
-        if indexForComputer == arrayOfnumbers.count - 1 {
-            gameTimer.invalidate()
-            indexForComputer = 0
-        }
-        
-        if indexForComputer >= 0 && indexForComputer < arrayOfnumbers.count - 1 {
-            buttons[arrayOfnumbers[indexForComputer] - 1].layer.shadowColor = UIColor.white.cgColor
-            buttons[arrayOfnumbers[indexForComputer] - 1].layer.shadowRadius = 10
-            buttons[arrayOfnumbers[indexForComputer] - 1].layer.shadowOffset = CGSize(width: 0, height: 0)
-            buttons[arrayOfnumbers[indexForComputer] - 1].flash()
-            indexForComputer += 1
-        }
-    }
-    
     func makeUserBtnFlash(btn: UIButton){
-        btn.layer.shadowColor = UIColor.white.cgColor
-        btn.layer.shadowRadius = 10
-        btn.layer.shadowOffset = CGSize(width: 0, height: 0)
         btn.flash()
     }
-    
-        
 }
 
 
+
 extension UIButton {
-    func flash() {
-        
+    
+    func flash(){
         let flash = CABasicAnimation(keyPath: "shadowOpacity")
-        flash.duration = 0.8
+        flash.duration = 0.7
         flash.fromValue = 1
         flash.toValue = 0
         flash.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         flash.autoreverses = false
         flash.repeatCount = 1
         
+        layer.shadowColor = UIColor.white.cgColor
+        layer.shadowRadius = 10
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        
         layer.add(flash, forKey: nil)
     }
-    
 }
 
 
